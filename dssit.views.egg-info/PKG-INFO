@@ -1,0 +1,25 @@
+Metadata-Version: 1.1
+Name: dssit.views
+Version: 1.0
+Summary: DSSIT Custom Plone Views
+Home-page: http://it.dss.ucdavis.edu
+Author: Carol McMasters-Stone
+Author-email: cbeck@ucdavis.edu
+License: GPL
+Description: Introduction
+        ============
+        
+        Custom Views used by DSSIT at UCDavis
+        Tile News View
+        Tabular Events View
+        
+        Changelog
+        =========
+        
+        1.0 - 2014-02-11
+        ----------------
+        - Initial release
+        
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python

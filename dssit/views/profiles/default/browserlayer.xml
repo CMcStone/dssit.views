@@ -1,0 +1,6 @@
+<layers>
+ <layer
+     name="MyViewsLayer"
+     interface="dssit.vews.interfaces.IMyViewsLayer"
+	/>
+</layers>

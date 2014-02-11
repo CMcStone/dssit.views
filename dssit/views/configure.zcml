@@ -1,0 +1,134 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:five="http://namespaces.zope.org/five"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns:i18n="http://namespaces.zope.org/i18n"
+  xmlns:zcml="http://namespaces.zope.org/zcml" 
+  i18n_domain="dssit.views">
+
+    <five:registerPackage package="." />
+
+    <!-- Profiles -->
+    <genericsetup:registerProfile
+        name="default"
+        title="DSSIT Views"
+        directory="profiles/default"
+        description="Views for DSSIT."
+        provides="Products.GenericSetup.interfaces.EXTENSION" />
+	   
+	   
+
+    <!-- Views --> 
+    <browser:page
+        zcml:condition="installed plone.app.collection"
+        for="plone.app.collection.interfaces.ICollection"
+        name="tilenews_view"
+        class=".views.TileNewsView"
+	   allowed_interface=".interfaces.ITileNewsView"
+        template="templates/tilenews_view.pt"
+        permission="zope.Public"
+        />
+    <browser:page
+        zcml:condition="installed plone.app.collection"
+        for="plone.app.collection.interfaces.ICollection"
+        name="TabularEventsView"
+        class=".views.TabularEventsView"
+	   allowed_interface=".interfaces.ITabularEventsView"
+        template="templates/tabularevents_view.pt"
+        permission="zope.Public"
+        />
+           
+    <browser:page
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="tabularevents_view"
+        class=".views.TabularEventsView"
+        layer=".interfaces.IMyViewsLayer"
+        template="templates/tabularevents_view.pt"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.IATTopic"
+        name="tabularevents_view"
+        class=".views.TabularEventsView"
+        layer=".interfaces.IMyViewsLayer"
+        template="templates/tabularevents_view.pt"
+        permission="zope2.View"
+    />
+    
+    <!--browser:page
+        for="Products.ATContentTypes.interface.IATFolder"
+        name="tilenews_view"
+        class=".views.TileNewsView"
+        layer=".interfaces.IMyViewsLayer"
+        template="templates/tilenews_view.pt"
+        permission="zope2.View"
+    /-->
+
+    <browser:page
+        for="Products.ATContentTypes.interface.IATTopic"
+        name="tilnews_view"
+        class=".views.TileNewsView"
+        layer=".interfaces.IMyViewsLayer"
+        template="templates/tilenews_view.pt"
+        permission="zope2.View"
+    />
+    
+    <include package="plone.app.contentmenu"/>
+
+    <browser:menuItem
+        for="Products.ATContentTypes.interface.IATFolder"
+        menu="plone_displayviews"
+        layer=".interfaces.IMyViewsLayer"
+        title="Tabular Events View"
+        action="@@tabularevents_view"
+        description="A view of events in tabular format"
+    />
+    
+    <browser:menuItem
+        for="Products.ATContentTypes.interface.IATTopic"
+        menu="plone_displayviews"
+        layer=".interfaces.IMyViewsLayer"
+        title="Tabular Events View"
+        action="@@tabularevents_view"
+        description="A view of events in tabular format"
+    /> 
+    <!--browser:menuItem
+        for="Products.ATContentTypes.interface.IATFolder"
+        menu="plone_displayviews"
+        layer=".interfaces.IMyViewsLayer"
+        title="Tile News View"
+        action="@@tilenews_view"
+        description="A view of news in tile format"
+    /-->
+    
+    <browser:menuItem
+        for="Products.ATContentTypes.interface.IATTopic"
+        menu="plone_displayviews"
+        layer=".interfaces.IMyViewsLayer"
+        title="Tile News View"
+        action="@@tilenews_view"
+        description="A view of news in tile format"
+    />
+    <browser:menuItem
+        zcml:condition="installed plone.app.collection"
+        for="plone.app.collection.interfaces.ICollection"
+        menu="plone_displayviews"
+        layer=".interfaces.IMyViewsLayer"
+        title="Tile News View"
+        action="@@tilenews_view"
+        description="A view of news in tile format"
+    />
+    <browser:menuItem
+            zcml:condition="installed plone.app.collection"
+            for="plone.app.collection.interfaces.ICollection"
+            menu="plone_displayviews"
+            layer=".interfaces.IMyViewsLayer"
+            title="Tabular Events View"
+            action="@@tabularevents_view"
+            description="A view of news in tile format"
+        />
+   
+
+</configure>
